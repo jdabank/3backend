@@ -24,8 +24,16 @@ const MONGODB_URI = process.env.MONGODB_URI;
 //   })
 // })
 
+app.post('/', (req, res) => {
+  Test.create(req.body, (err, createTest) => {
+    res.json(createTest)
+  })
+})
+
 app.get('/', (req, res) => {
-  res.json(test)
+  Test.find({}, (err, test) => {
+    res.json(test)
+  })
 })
 
 mongoose.connect(MONGODB_URI, () => {
