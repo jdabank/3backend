@@ -18,12 +18,6 @@ const PORT = process.env.PORT || 3003
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-// app.get('/test/seed', (req, res) => {
-//   Test.create(seedData, (err, createdData) => {
-//     console.log('Testing mongoDB')
-//   })
-// })
-
 app.post('/', (req, res) => {
   Test.create(req.body, (err, createTest) => {
     res.json(createTest)
@@ -33,6 +27,18 @@ app.post('/', (req, res) => {
 app.get('/', (req, res) => {
   Test.find({}, (err, test) => {
     res.json(test)
+  })
+})
+
+app.delete('/:id', (req, res) => {
+  Test.findByIdAndRemove(req.params.id, (err, removeTest) => {
+    res.json(removeTest)
+  })
+})
+
+app.put('/:id', (req, res) => {
+  Test.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updateTest) => {
+    res.json(updateTest)
   })
 })
 
