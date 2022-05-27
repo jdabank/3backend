@@ -18,10 +18,14 @@ const PORT = process.env.PORT || 3003
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-app.get('/test/seed', (req, res) => {
-  Test.create(seedData, (err, createdData) => {
-    console.log('Testing mongoDB')
-  })
+// app.get('/test/seed', (req, res) => {
+//   Test.create(seedData, (err, createdData) => {
+//     console.log('Testing mongoDB')
+//   })
+// })
+
+app.get('/', (req, res) => {
+  res.send('Pls work')
 })
 
 mongoose.connect(MONGODB_URI, () => {
