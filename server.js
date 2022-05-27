@@ -2,16 +2,27 @@ const express = require('express');
 const mongoose = require ('mongoose');
 const app = express ();
 const cors = require('cors')
-const db = mongoose.connection;
+const Test = require('./models/testSchema.js')
+const seedData = require('./models/test.js')
+
 require('dotenv').config()
+
+
+const db = mongoose.connection;
 
 app.use(express.json());
 
 app.use(cors())
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3003
 
 const MONGODB_URI = process.env.MONGODB_URI;
+
+app.get('/test/seed', (req, res) => {
+  Test.create(seedData, (err, createdData) => {
+    console.log('Testing mongoDB')
+  })
+})
 
 mongoose.connect(MONGODB_URI, () => {
   console.log('Praying to monGod...')
