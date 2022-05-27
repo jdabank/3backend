@@ -25,7 +25,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // })
 
 app.get('/', (req, res) => {
-  res.send('Pls work')
+  res.send(test)
 })
 
 mongoose.connect(MONGODB_URI, () => {
