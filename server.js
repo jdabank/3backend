@@ -2,8 +2,7 @@ const express = require('express');
 const mongoose = require ('mongoose');
 const app = express ();
 const cors = require('cors')
-const Test = require('./models/testSchema.js')
-const seedData = require('./models/test.js')
+const Food = require('./models/foodSchema.js')
 
 require('dotenv').config()
 
@@ -19,26 +18,26 @@ const PORT = process.env.PORT || 3003
 const MONGODB_URI = process.env.MONGODB_URI;
 
 app.post('/', (req, res) => {
-  Test.create(req.body, (err, createTest) => {
-    res.json(createTest)
+  Food.create(req.body, (err, createFood) => {
+    res.json(createFood)
   })
 })
 
 app.get('/', (req, res) => {
-  Test.find({}, (err, test) => {
-    res.json(test)
+  Food.find({}, (err, food) => {
+    res.json(food)
   })
 })
 
 app.delete('/:id', (req, res) => {
-  Test.findByIdAndRemove(req.params.id, (err, removeTest) => {
-    res.json(removeTest)
+  Food.findByIdAndRemove(req.params.id, (err, removeFood) => {
+    res.json(removeFood)
   })
 })
 
 app.put('/:id', (req, res) => {
-  Test.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updateTest) => {
-    res.json(updateTest)
+  Food.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updateFood) => {
+    res.json(updateFood)
   })
 })
 
