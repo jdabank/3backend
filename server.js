@@ -17,25 +17,25 @@ const PORT = process.env.PORT || 3003
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-app.post('/potluck', (req, res) => {
+app.post('/p', (req, res) => {
   Food.create(req.body, (err, createFood) => {
     res.json(createFood)
   })
 })
 
-app.get('/potluck', (req, res) => {
+app.get('/', (req, res) => {
   Food.find({}, (err, food) => {
     res.json(food)
   })
 })
 
-app.delete('/potluck/:id', (req, res) => {
+app.delete('/:id', (req, res) => {
   Food.findByIdAndRemove(req.params.id, (err, removeFood) => {
     res.json(removeFood)
   })
 })
 
-app.put('/potluck/:id', (req, res) => {
+app.put('/:id', (req, res) => {
   Food.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updateFood) => {
     res.json(updateFood)
   })
