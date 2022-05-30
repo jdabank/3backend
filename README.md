@@ -1,5 +1,5 @@
-# 3backend
+# Technologies Used
 
-unit 3 project backend repo
-
-Jordan Bank
+Express
+JavaScript
+MongoDB Atlas
