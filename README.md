@@ -1,5 +1,8 @@
-# 3backend
+# Technologies Used
 
-unit 3 project backend repo
+Express
+JavaScript
+MongoDB Atlas
 
-Jordan Bank
+
+By Chris Elian & Jordan Bank
